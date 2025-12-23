@@ -62,7 +62,6 @@ public class HomePageTest extends BaseTest {
         qaPage.waitForPageToLoad();
 
         String currentUrl = qaPage.getPageUrl();
-        System.out.println("QA Jobs Page URL: " + currentUrl);
 
         Assert.assertTrue(currentUrl.contains("jobs.lever.co") || currentUrl.contains("Quality"),
             "Should navigate to Quality Assurance jobs page. Current URL: " + currentUrl);
@@ -83,7 +82,6 @@ public class HomePageTest extends BaseTest {
         }
 
         String urlAfterLocation = qaPage.getPageUrl();
-        System.out.println("URL after location selection: " + urlAfterLocation);
         
         Assert.assertTrue(urlAfterLocation.contains("jobs.lever.co/insiderone"),
             "Should be on jobs.lever.co/insiderone page. Current URL: " + urlAfterLocation);
@@ -112,7 +110,6 @@ public class HomePageTest extends BaseTest {
         }
 
         String jobDetailUrl = qaPage.getPageUrl();
-        System.out.println("Job detail page URL: " + jobDetailUrl);
 
         Assert.assertTrue(jobDetailUrl.contains("jobs.lever.co/insiderone/774658ce-0d6e-4b07-a69b-4629fa11d6f3"),
             "Should navigate to job detail page. Current URL: " + jobDetailUrl);
@@ -126,7 +123,6 @@ public class HomePageTest extends BaseTest {
         }
 
         String applyPageUrl = qaPage.getPageUrl();
-        System.out.println("Apply page URL: " + applyPageUrl);
 
         Assert.assertTrue(applyPageUrl.contains("jobs.lever.co/insiderone/774658ce-0d6e-4b07-a69b-4629fa11d6f3/apply"),
             "Should navigate to job application page. Current URL: " + applyPageUrl);

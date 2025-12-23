@@ -57,7 +57,6 @@ public class HomePage extends BasePage {
                 clickElement(acceptAllCookiesButton);
             }
         } catch (Exception e) {
-            System.out.println("Cookie banner not found or already accepted");
         }
     }
 }

@@ -83,29 +83,20 @@ public class QualityAssurancePage extends BasePage {
     public boolean verifyQualityAssuranceFilterSelected() {
         try {
             String dropdownText = getTeamDropdownText();
-            System.out.println("Team Dropdown Text: " + dropdownText);
             
             if (dropdownText != null && !dropdownText.isEmpty()) {
-                boolean result = dropdownText.toUpperCase().contains("QUALITY ASSURANCE");
-                System.out.println("Contains 'Quality Assurance' (case-insensitive): " + result);
-                return result;
+                return dropdownText.toUpperCase().contains("QUALITY ASSURANCE");
             }
             
-            // Alternatif: aria-label'ı kontrol et
             WebElement element = findElement(teamDropdown);
             String ariaLabel = element.getAttribute("aria-label");
-            System.out.println("Team Dropdown aria-label: " + ariaLabel);
             
             if (ariaLabel != null) {
-                boolean result = ariaLabel.toUpperCase().contains("QUALITY ASSURANCE");
-                System.out.println("aria-label contains 'Quality Assurance' (case-insensitive): " + result);
-                return result;
+                return ariaLabel.toUpperCase().contains("QUALITY ASSURANCE");
             }
             
             return false;
         } catch (Exception e) {
-            System.out.println("Error verifying Quality Assurance filter: " + e.getMessage());
-            e.printStackTrace();
             return false;
         }
     }
@@ -118,7 +109,6 @@ public class QualityAssurancePage extends BasePage {
             Thread.currentThread().interrupt();
         }
         String dropdownText = getTeamDropdownText();
-        System.out.println("Team Dropdown after click: " + dropdownText);
         return dropdownText.contains("Quality Assurance");
     }
 
@@ -139,32 +129,22 @@ public class QualityAssurancePage extends BasePage {
 
     public boolean verifyTeamCategoryIsQualityAssurance() {
         String teamCategory = getTeamCategoryTitle();
-        System.out.println("Team Category Title: " + teamCategory);
-        boolean isQA = teamCategory.equalsIgnoreCase("Quality Assurance");
-        System.out.println("Is Quality Assurance: " + isQA);
-        return isQA;
+        return teamCategory.equalsIgnoreCase("Quality Assurance");
     }
 
     public boolean verifyPostingName(String expectedName) {
         String actualName = getPostingName();
-        System.out.println("Posting Name: " + actualName);
-        boolean matches = actualName.equals(expectedName);
-        System.out.println("Posting name matches: " + matches);
-        return matches;
+        return actualName.equals(expectedName);
     }
 
     public boolean verifyJobLocation(String expectedLocation) {
         String actualLocation = getJobLocation();
-        System.out.println("Job Location: " + actualLocation);
-        boolean matches = actualLocation.equalsIgnoreCase(expectedLocation);
-        System.out.println("Location matches: " + matches);
-        return matches;
+        return actualLocation.equalsIgnoreCase(expectedLocation);
     }
 
     public void clickJobListing() {
         scrollToElement(postingTitleLink);
         clickElement(postingTitleLink);
-        System.out.println("Job listing clicked");
     }
 
     public void clickApplyButton() {
@@ -177,23 +157,18 @@ public class QualityAssurancePage extends BasePage {
         WebElement element = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(applyButton));
         scrollToElement(applyButton);
         element.click();
-        System.out.println("Apply button clicked");
     }
 
     public void clickApplyForThisJobButton() {
         scrollToElement(applyForThisJobButton);
         clickElement(applyForThisJobButton);
-        System.out.println("Apply for this job button clicked");
     }
 
     public boolean isSubmitApplicationButtonDisplayed() {
         try {
             WebElement element = findElement(submitApplicationButton);
-            boolean isDisplayed = element.isDisplayed();
-            System.out.println("Submit application button is displayed: " + isDisplayed);
-            return isDisplayed;
+            return element.isDisplayed();
         } catch (Exception e) {
-            System.out.println("Submit application button not found: " + e.getMessage());
             return false;
         }
     }

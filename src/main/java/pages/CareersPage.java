@@ -31,17 +31,11 @@ public class CareersPage extends BasePage {
 
     public void clickQAOpenPositions() {
         scrollToElement(qaOpenPositionsButton);
-        
-        // Önce href'i al
         String href = findElement(qaOpenPositionsButton).getAttribute("href");
-        System.out.println("QA Open Positions button href: " + href);
         
-        // Eğer href varsa, doğrudan navigate et
         if (href != null && !href.isEmpty()) {
             driver.get(href);
-            System.out.println("Navigated to: " + href);
         } else {
-            // href yoksa normal tıklama yap
             clickElementWithJS(qaOpenPositionsButton);
         }
     }
